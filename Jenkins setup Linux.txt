@@ -1,0 +1,39 @@
+1. yum update -y
+****************// Installing JDK in linux****************
+2. wget --no-check-certificate --no-cookies --header "Cookie: 	oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm
+3. yum install -y jdk-8u141-linux-x64.rpm
+------------------------------------------------------------------
+*****************//Installing Maven in linux********************
+4. wget  http://mirrors.fibergrid.in/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+
+5. tar -xzf apache-maven-3.5.4-bin.tar.gz  // untar mvn
+6. mv apache-maven-3.5.4 /usr       //Move maven to usr directory
+-----------------------------------------------------------------------------
+***********************//Setting up JAVA_HOME & MAVEN_HOME*****************
+7. vi ~/.bash_profile
+///Paste this code
+
+JAVA_HOME=/usr/java/jdk1.8.0_141
+MAVEN_HOME=/home/ec2-user/apache-maven-3.5.4
+PATH=$PATH:$JAVA_HOME/bin
+PATH=$PATH:$MAVEN_HOME/bin
+:wq!   // save file
+
+8. source ~/.bash_profile
+---------------------------------------------------------------------------------
+
+9. java -version
+10. mvn -version   
+********************//Installing Jenkins in linux********************
+11. sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+12. sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+13. yum install jenkins -y
+14. systemctl start jenkins
+15. systemctl enable jenkins
+16. cat /var/lib/jenkins/secrets/initialAdminPassword
+------------------------------------------------------------------------------------
+*********************//Installing Git in linux********************
+17. yum install git -y
+18  git --version
+19. which -a git
+---------------------------------------------------------------------------------------  
